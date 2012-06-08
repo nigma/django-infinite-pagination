@@ -1,5 +1,4 @@
 #-*- coding: utf-8 -*-
-
 from django.views.generic.list import ListView
 
 from infinite_pagination.paginator import InfinitePaginator
@@ -12,3 +11,8 @@ class ArticleListView(ListView):
     paginate_by = 10
     paginator_class = InfinitePaginator
     template_name = "article_list.html"
+
+
+class AutoArticleListView(ListView):
+    model = Article
+    template_name = "auto_list.html"

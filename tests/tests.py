@@ -80,6 +80,7 @@ class InfinitePaginatorTestCase(TestCase):
 
 class TemplateTagTestCase(TestCase):
 
+    BASE_URL = "/articles/"
     def setUp(self):
         for x in range(25):
             Article.objects.create(title=str(x))
@@ -88,7 +89,7 @@ class TemplateTagTestCase(TestCase):
         Article.objects.all().delete()
 
     def test_init_page(self):
-        resp = self.client.get("/articles/?param=x")
+        resp = self.client.get(self.BASE_URL + "?param=x")
         self.assertIn("""<a>&larr; Previous</a>""", resp.content)
         self.assertIn("""<a href="?page=2&amp;param=x">Next &rarr;</a>""", resp.content)
         self.assertIn("""<li>0</li>""", resp.content)
@@ -96,7 +97,7 @@ class TemplateTagTestCase(TestCase):
         self.assertNotIn("""<li>20</li>""", resp.content)
 
     def test_first_page(self):
-        resp = self.client.get("/articles/?page=1&param=x")
+        resp = self.client.get(self.BASE_URL + "?page=1&param=x")
         self.assertIn("""<a>&larr; Previous</a>""", resp.content)
         self.assertIn("""<a href="?page=2&amp;param=x">Next &rarr;</a>""", resp.content)
         self.assertIn("""<li>0</li>""", resp.content)
@@ -104,7 +105,7 @@ class TemplateTagTestCase(TestCase):
         self.assertNotIn("""<li>20</li>""", resp.content)
 
     def test_second_page(self):
-        resp = self.client.get("/articles/?page=2&param=x")
+        resp = self.client.get(self.BASE_URL + "?page=2&param=x")
         self.assertIn("""<a href="?page=1&amp;param=x">First</a>""", resp.content)
         self.assertIn("""<a href="?page=1&amp;param=x">&larr; Previous</a>""", resp.content)
         self.assertIn("""<a href="?page=3&amp;param=x">Next &rarr;</a>""", resp.content)
@@ -113,9 +114,14 @@ class TemplateTagTestCase(TestCase):
         self.assertNotIn("""<li>20</li>""", resp.content)
 
     def test_last_page(self):
-        resp = self.client.get("/articles/?page=3&param=x")
+        resp = self.client.get(self.BASE_URL + "?page=3&param=x")
         self.assertIn("""<a href="?page=1&amp;param=x">First</a>""", resp.content)
         self.assertIn("""<a href="?page=2&amp;param=x">&larr; Previous</a>""", resp.content)
         self.assertIn("""<a>Next &rarr;</a>""", resp.content)
         self.assertIn("""<li>20</li>""", resp.content)
         self.assertNotIn("""<li>10</li>""", resp.content)
+
+
+class AutoPaginateTemplateTagTestCase(TemplateTagTestCase):
+
+    BASE_URL = "/auto/"

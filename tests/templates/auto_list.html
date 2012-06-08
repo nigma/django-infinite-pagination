@@ -1,4 +1,4 @@
-{% load infinite_pagination_tags %}
+{% load infinite_pagination %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,14 +7,12 @@
 <body>
     <div>
         <ul>
-        {% autopaginate object_list 10 %}
-        {% for object in object_list %}
+        {% autopaginate object_list per_page=10 as paginated_list %}
+        {% for object in paginated_list %}
             <li>{{ object }}</li>
         {% endfor %}
         </ul>
-        <div>
-            {% infinite_paginate %}
-        </div>
+        {% paginate %}
     </div>
 </body>
 </html>
