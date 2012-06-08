@@ -1,0 +1,20 @@
+{% load infinite_pagination_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <div>
+        <ul>
+        {% autopaginate object_list 10 %}
+        {% for object in object_list %}
+            <li>{{ object }}</li>
+        {% endfor %}
+        </ul>
+        <div>
+            {% infinite_paginate %}
+        </div>
+    </div>
+</body>
+</html>

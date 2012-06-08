@@ -1,0 +1,17 @@
+{% load infinite_pagination %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <div>
+        <ul>
+        {% for object in object_list %}
+            <li>{{ object }}</li>
+        {% endfor %}
+        </ul>
+        {% paginate %}
+    </div>
+</body>
+</html>
