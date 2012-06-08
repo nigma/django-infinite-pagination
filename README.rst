@@ -44,6 +44,34 @@ A generic ``pagination/infinite_pagination.html`` template that works well with
 Twitter Bootstrap stylesheet is provided by this application. Adjust it to your
 requirements.
 
+Paginating in Templates
+-----------------------
+
+Sometimes application views cannot be modified and the pagination can only be
+done at the template level. The ``autopaginate`` template tag is provided
+as a last resort of applying pagination to object lists inside templates::
+
+    {% load infinite_pagination %}
+
+    {% autopaginate object_list per_page=10 as paginated_list %}
+
+    {% for object in paginated_list %}
+        {{ object }}
+    {% endfor %}
+
+    {% paginate %}
+
+
+The ``autopaginate`` tag takes a queryset and a number of items per page
+as input and returns a page slice for displaying in a template. Current page
+number is retrieved from template context or ``page`` request GET params.
+It can also be specified as an optional tag param::
+
+    {% autopaginate object_list per_page=10 page=2 as paginated_list %}
+
+The tag also sets ``paginator`` and ``page_obj`` template context variables for
+the ``paginate`` tag that uses them to render navigation links.
+
 License
 -------
 
