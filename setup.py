@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 version = "1.0"
 
@@ -18,8 +18,8 @@ setup(
 
     long_description = open("README.rst").read(),
 
-    packages = ["infinite_pagination"],
-    include_package_data=True,
+    packages = find_packages(exclude=["tests"]),
+    include_package_data = True,
 
     tests_require=[
         "django>=1.4,<1.5",

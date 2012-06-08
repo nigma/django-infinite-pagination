@@ -1,2 +1,5 @@
 include README.rst
 include LICENSE
+include run_tests.py
+recursive-include infinite_pagination *.html
+recursive-include tests *.py
