@@ -85,3 +85,5 @@ class InfinitePage(Page):
         return (
             (self.number - 1) * self.paginator.per_page + len(self.object_list)
         )
+
+__all__ = ["InfinitePaginator", "InfinitePage"]
