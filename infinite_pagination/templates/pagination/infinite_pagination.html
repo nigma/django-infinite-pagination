@@ -1,0 +1,22 @@
+{% load i18n %}
+
+{% if is_paginated %}
+<div class="pagination">
+    <ul>
+        {% if page_obj.has_previous %}
+            <li><a href="?page=1{{ getvars }}{{ hashtag }}">First</a></li>
+            <li class="prev">
+                <a href="?page={{ page_obj.previous_page_number }}{{ getvars }}{{ hashtag }}">&larr; {% trans "Previous" %}</a>
+            </li>
+            <li class="disabled"><a href="#">&hellip;</a></li>
+        {% else %}
+            <li class="prev disabled"><a>&larr; {% trans "Previous" %}</a></li>
+        {% endif %}
+        {% if page_obj.has_next %}
+            <li class="next"><a href="?page={{ page_obj.next_page_number }}{{ getvars }}{{ hashtag }}">{% trans "Next" %} &rarr;</a></li>
+        {% else %}
+            <li class="next disabled"><a>{% trans "Next" %} &rarr;</a></li>
+        {% endif %}
+    </ul>
+</div>
+{% endif %}
