@@ -1,0 +1,38 @@
+# django-infinite-pagination basque translation
+# Copyright (C) 2013
+# This file is distributed under the same license as the django-infinite-pagination package.
+# Unai Zalakain <unai at gisa-elkartea dot com>, 2013
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-30 20:41+0200\n"
+"PO-Revision-Date: 2013-04-30 21:00+2\n"
+"Last-Translator: Unai Zalakain <unai at gisa-elkartea dot com>\n"
+"Language-Team: eu\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: templates/pagination/infinite_pagination.html:9
+#: templates/pagination/infinite_pagination.html:13
+msgid "Previous"
+msgstr "Aurrekoa"
+
+#: templates/pagination/infinite_pagination.html:16
+#: templates/pagination/infinite_pagination.html:18
+msgid "Next"
+msgstr "Hurrengoa"
+
+#: templatetags/infinite_pagination.py:35
+msgid "Page can not be converted to an int."
+msgstr "Ezin da orria zenbaki batetan bihurtu"
+
+#: templatetags/infinite_pagination.py:41
+#, python-format
+msgid "Invalid page (%(page_number)s)"
+msgstr "Orrialde baliogabea (%(page_number)s)"
